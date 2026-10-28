@@ -40,3 +40,15 @@ Exported 2026-10-04 from the `support` repo, `apps/kb/` → `src/`.
 - Page: `src/routes/kb/incidents/4471-split/+page.svx` (signed with the course ticket, desk ref DR-VPZ3-SN91), with the component `src/lib/kb/ProblemSplit.svelte`.
 - The page as the desk sees it: `rendered/4471-split.html`.
 - Tickets: issues #1 (parser, 379) and #2 (form hint, 33). Five parser reports read as a one-day move; the desk footnotes them (issue #3 closed).
+
+## Render the kb
+
+A minimal stand-in for the desk's build (the original config stayed in the `support` repo):
+
+```
+npm install
+npm run build     # static site in build/
+npm run preview   # open it
+```
+
+`rendered/4471-split.html` and `.png` are made from that build. Look at the built page before you count.
