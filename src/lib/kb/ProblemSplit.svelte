@@ -6,12 +6,13 @@
 
   let { ticket, issues }: { ticket: number; issues: Record<string, string> } = $props();
 
-  // Three problems: the one-day moves the desk noted, the booking-v3 hint, and the month-first parser.
+  // Two problems, counted the desk's way: each report where its tenant files it (causes.ts).
+  // The one-day moves the desk noted stay in the count and get a footnote.
   const merged = $derived(uniqueById(reports as Report[]).filter((r) => r.mergedInto === ticket));
-  const problemOf = (r: Report) => (notes.oneDayMove.includes(r.id) ? 'oneDay' : (causeOf(r, tenantOf(r)) ?? 'unplaced'));
   const rows = $derived(
-    ['parser', 'hint', 'oneDay'].map((p) => ({ p, n: merged.filter((r) => problemOf(r) === p).length }))
+    ['parser', 'hint'].map((p) => ({ p, n: merged.filter((r) => causeOf(r, tenantOf(r)) === p).length }))
   );
+  const oneDay = $derived(merged.filter((r) => notes.oneDayMove.includes(r.id)).length);
 </script>
 
 <table>
@@ -23,3 +24,4 @@
     <tr><td>total</td><td>{rows.reduce((a, r) => a + r.n, 0)}</td><td></td></tr>
   </tbody>
 </table>
+<p class="note">{oneDay} of the <code>parser</code> reports read as a one-day move, not a swap. They stay counted there.</p>

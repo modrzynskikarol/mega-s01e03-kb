@@ -1,6 +1,6 @@
 ---
 layout: runbook
-title: '#4471 · one ticket, three problems'
+title: '#4471 · one ticket, two problems'
 owner: support desk
 status: living
 reviewed: 2026-10-28
@@ -15,13 +15,12 @@ signature: v1.eyJzdWIiOiI5ODkyIiwiYXVkIjoiY2hhbGxlbmdlOndoYXQtaXQtc2hvd3MiLCJpYX
 
   const issues = {
     parser: 'https://github.com/modrzynskikarol/mega-s01e03-kb/issues/1',
-    hint: 'https://github.com/modrzynskikarol/mega-s01e03-kb/issues/2',
-    oneDay: 'https://github.com/modrzynskikarol/mega-s01e03-kb/issues/3'
+    hint: 'https://github.com/modrzynskikarol/mega-s01e03-kb/issues/2'
   };
 </script>
 
 [#4471](/kb/incidents/4471) was merged as one issue and marked known. It is not one issue. The
-reports hold three different problems with three different fixes, so each has its own ticket.
+reports hold two different problems with two different fixes, so each has its own ticket.
 
 <Callout>
 Not known as one. Merging by subject line ([decision 0001](/kb/decisions/0001-dedupe-by-subject))
@@ -34,7 +33,7 @@ put separate bugs into one ticket.
 
 - **parser** – the shared parser reads every date month first; tenants that write the day first get flipped dates.
 - **hint** – the booking-v3 form prints `MM/DD/YYYY` under the date field, so day-first tenants type month first. Form channel only; fix the hint, not the parser.
-- **oneDay** – dates off by exactly one day (a Tuesday shown as Monday, "only June", Lisbon and Toronto getting different days). That is not a swap. Timezone handling is the suspect.
+- Some **parser** reports read as a one-day move (a Tuesday shown as Monday, "only June", Lisbon and Toronto getting different days). The desk keeps them counted under their tenant's cause and footnotes them; timezone handling is worth a look when the parser is fixed.
 
 ## How the causes were told apart
 

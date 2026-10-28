@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>#4471 · one ticket, three problems</title>
+<title>#4471 · one ticket, two problems</title>
 <style>
 :root{--muted:#667;--warn:#b45309;--warn-bg:#fef3c7;--accent:#1d4ed8;--mono:ui-monospace,monospace;color-scheme:light dark}
 @media (prefers-color-scheme:dark){:root{--muted:#9aa;--warn:#fbbf24;--warn-bg:#3b2f0a;--accent:#8ab4ff}}
@@ -10,19 +10,19 @@ table{border-collapse:collapse;width:100%;margin:1rem 0}th,td{border-bottom:1px 
 .note,.tags{color:var(--muted);font-size:.85em}.stamp{margin-top:2rem;font:.85rem var(--mono);color:var(--muted)}.stamp b{color:var(--accent)}
 </style></head><body>
 <p style="color:var(--muted);font-size:.85rem">support knowledge base · owner: support desk · status: living · reviewed: 2026-10-28</p>
-<h1>#4471 · one ticket, three problems</h1>
-<p><a href="#">#4471</a> was merged as one issue and marked known. It is not one issue. The reports hold three different problems with three different fixes, so each has its own ticket.</p>
+<h1>#4471 · one ticket, two problems</h1>
+<p><a href="#">#4471</a> was merged as one issue and marked known. It is not one issue. The reports hold two different problems with two different fixes, so each has its own ticket.</p>
 <div class="callout"><p>Not known as one. Merging by subject line (decision 0001) put separate bugs into one ticket.</p></div>
 <h2>The split</h2>
 <table><thead><tr><th>problem</th><th>reports</th><th>ticket</th></tr></thead><tbody>
-<tr><td><code>parser</code></td><td>374</td><td><a href="https://github.com/modrzynskikarol/mega-s01e03-kb/issues/1">#1</a></td></tr>
+<tr><td><code>parser</code></td><td>379</td><td><a href="https://github.com/modrzynskikarol/mega-s01e03-kb/issues/1">#1</a></td></tr>
 <tr><td><code>hint</code></td><td>33</td><td><a href="https://github.com/modrzynskikarol/mega-s01e03-kb/issues/2">#2</a></td></tr>
-<tr><td><code>oneDay</code></td><td>5</td><td><a href="https://github.com/modrzynskikarol/mega-s01e03-kb/issues/3">#3</a></td></tr>
 <tr><td>total</td><td>412</td><td></td></tr></tbody></table>
+<p class="note">5 of the <code>parser</code> reports read as a one-day move, not a swap. They stay counted there.</p>
 <ul>
 <li><b>parser</b> – the shared parser reads every date month first; tenants that write the day first get flipped dates.</li>
 <li><b>hint</b> – the booking-v3 form prints <code>MM/DD/YYYY</code> under the date field, so day-first tenants type month first. Form channel only; fix the hint, not the parser.</li>
-<li><b>oneDay</b> – dates off by exactly one day (a Tuesday shown as Monday, "only June", Lisbon and Toronto getting different days). That is not a swap. Timezone handling is the suspect.</li></ul>
+<li>Some <b>parser</b> reports read as a one-day move (a Tuesday shown as Monday, "only June", Lisbon and Toronto getting different days). The desk keeps them counted under their tenant's cause and footnotes them; timezone handling is worth a look when the parser is fixed.</li></ul>
 <h2>How the causes were told apart</h2>
 <p>The cause depends on the tenant's locale and booking form, not on intake's tag, which is only a guess from the browser.</p>
 <p><strong>412</strong> reports merged into #4471 · <strong>2</strong> causes</p>
@@ -30,7 +30,6 @@ table{border-collapse:collapse;width:100%;margin:1rem 0}th,td{border-bottom:1px 
 <tr><td><code>parser</code></td><td>379</td><td class="tags">parser ×356 · hint ×23</td><td>11</td><td>2026-04-01 → 2026-10-04</td><td>#4471</td></tr>
 <tr class="wrong"><td><code>hint</code></td><td>33</td><td class="tags">hint ×18 · parser ×15</td><td>3</td><td>2026-04-17 → 2026-09-22</td><td>not this ticket — no ticket of its own</td></tr></tbody></table>
 <p class="note">5 reports read as a one-day move; filed under <code>parser</code> by tenant.</p>
-<p>The one-day reports are counted under their tenant's cause above and footnoted there; they are the third ticket.</p>
 <h2>Lessons</h2>
 <ul><li>Intake's tag disagrees with the cause for many reports. Look up the tenant.</li><li>A subject-line merge hides bugs that sound alike. Check the cause before you call a ticket known.</li></ul>
 <p class="stamp">desk ref <b>DR-VPZ3-SN91</b></p>

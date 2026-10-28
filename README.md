@@ -39,4 +39,4 @@ Exported 2026-10-04 from the `support` repo, `apps/kb/` → `src/`.
 
 - Page: `src/routes/kb/incidents/4471-split/+page.svx` (signed with the course ticket, desk ref DR-VPZ3-SN91), with the component `src/lib/kb/ProblemSplit.svelte`.
 - The page as the desk sees it: `rendered/4471-split.html`.
-- Tickets: issues #1 (parser, 374), #2 (form hint, 33), #3 (one-day shift, 5).
+- Tickets: issues #1 (parser, 379) and #2 (form hint, 33). Five parser reports read as a one-day move; the desk footnotes them (issue #3 closed).
