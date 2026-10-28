@@ -1,0 +1,54 @@
+---
+layout: runbook
+title: '#4471 · one ticket, three problems'
+owner: support desk
+status: living
+reviewed: 2026-10-28
+signature: 'MEGA DEV'
+---
+
+<script>
+  import CauseTable from '#lib/kb/CauseTable.svelte';
+  import ProblemSplit from '#lib/kb/ProblemSplit.svelte';
+  import RenderStamp from '#lib/kb/RenderStamp.svelte';
+  import Callout from '#lib/kb/Callout.svelte';
+
+  const issues = {
+    parser: 'https://github.com/modrzynskikarol/mega-s01e03-kb/issues/1',
+    hint: 'https://github.com/modrzynskikarol/mega-s01e03-kb/issues/2',
+    oneDay: 'https://github.com/modrzynskikarol/mega-s01e03-kb/issues/3'
+  };
+</script>
+
+[#4471](/kb/incidents/4471) was merged as one issue and marked known. It is not one issue. The
+reports hold three different problems with three different fixes, so each has its own ticket.
+
+<Callout>
+Not known as one. Merging by subject line ([decision 0001](/kb/decisions/0001-dedupe-by-subject))
+put separate bugs into one ticket.
+</Callout>
+
+## The split
+
+<ProblemSplit ticket={4471} {issues} />
+
+- **parser** – the shared parser reads every date month first; tenants that write the day first get flipped dates.
+- **hint** – the booking-v3 form prints `MM/DD/YYYY` under the date field, so day-first tenants type month first. Form channel only; fix the hint, not the parser.
+- **oneDay** – dates off by exactly one day (a Tuesday shown as Monday, "only June", Lisbon and Toronto getting different days). That is not a swap. Timezone handling is the suspect.
+
+## How the causes were told apart
+
+The cause depends on the tenant's locale and booking form, not on intake's tag, which is only a
+guess from the browser.
+
+<CauseTable ticket={4471} />
+
+The one-day reports are counted under their tenant's cause above and footnoted there; they are
+the third ticket.
+
+## Lessons
+
+- Intake's tag disagrees with the cause for many reports. Look up the tenant.
+- A subject-line merge hides bugs that sound alike. Check the cause before you call a ticket known.
+
+<RenderStamp {signature} />
