@@ -4,7 +4,7 @@ title: '#4471 · one ticket, three problems'
 owner: support desk
 status: living
 reviewed: 2026-10-28
-signature: 'MEGA DEV'
+signature: v1.eyJzdWIiOiI5ODkyIiwiYXVkIjoiY2hhbGxlbmdlOndoYXQtaXQtc2hvd3MiLCJpYXQiOjE3OTMyMTg4NTMsImV4cCI6MTc5MzMwNTI1M30.G4I0cx4JvgYuq_o3wFR8h6gkj0C6aF-WM9kC2pQoIuE
 ---
 
 <script>
